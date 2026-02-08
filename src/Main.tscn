@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Main.gd" type="Script" id=1]
+[ext_resource path="res://src/Enemies/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Coin/Coin.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 712, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 712, 0, 0, 0, 0, 0, 712 )
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+Enemy = ExtResource( 2 )
+Coin = ExtResource( 5 )
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="CoinTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="PlayerPosition" type="Position2D" parent="."]
+position = Vector2( 240, 450 )
+
+[node name="MobePath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobePath"]
+position = Vector2( 0, 712 )
+rotation = -1.5708
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2, -1 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="Items" type="Node2D" parent="."]
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="CoinTimer" to="." method="_on_CoinTimer_timeout"]
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
+[connection signal="item_pickup" from="Player" to="." method="_on_Player_item_pickup"]
+[connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
