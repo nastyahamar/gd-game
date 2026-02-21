@@ -4,7 +4,7 @@ This is a 2D game developed using the Godot Engine. The player controls a main c
 
 The project demonstrates implementation of core game development concepts such as player movement, collision detection, score system, and game-over mechanics. The game logic is structured using scenes and scripts, following Godot’s node-based architecture.
 
-🚀 Features
+**Features**
 
 Player movement controls
 
@@ -16,7 +16,7 @@ Game over condition
 
 Simple and clean 2D design
 
-🛠 Technologies Used
+**Technologies Used**
 
 Godot Engine
 
