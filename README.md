@@ -6,18 +6,18 @@ The project demonstrates implementation of core game development concepts such a
 
 **Features**
 
-Player movement controls
+ Player movement controls
 
-Coin collection system with score counter
+ Coin collection system with score counter
 
-Enemy collision detection
+ Enemy collision detection
 
-Game over condition
+ Game over condition
 
-Simple and clean 2D design
+ Simple and clean 2D design
 
 **Technologies Used**
 
-Godot Engine
+ Godot Engine
 
-GDScript
+ GDScript
